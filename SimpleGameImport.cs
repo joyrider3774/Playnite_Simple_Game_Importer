@@ -32,25 +32,33 @@ namespace SimpleGameImport
 
         public void DoImportGames()
         {
-            GameImportView ImportView = new GameImportView(this, Settings);
-            var window = PlayniteApi.Dialogs.CreateWindow(new WindowCreationOptions
+            try
             {
-                ShowMinimizeButton = false,
-            });
+                GameImportView ImportView = new GameImportView(this, Settings);
+                var window = PlayniteApi.Dialogs.CreateWindow(new WindowCreationOptions
+                {
+                    ShowMinimizeButton = false,
+                });
 
-            window.Height = 350;
-            window.Width = 650;
-            window.Title = "Simple Game Importer";
+                window.Height = 350;
+                window.Width = 650;
+                window.Title = "Simple Game Importer";
 
-            // Set content of a window. Can be loaded from xaml, loaded from UserControl or created from code behind
-            window.Content = ImportView;
+                // Set content of a window. Can be loaded from xaml, loaded from UserControl or created from code behind
+                window.Content = ImportView;
 
-            // Set owner if you need to create modal dialog window
-            window.Owner = PlayniteApi.Dialogs.GetCurrentAppWindow();
-            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                // Set owner if you need to create modal dialog window
+                window.Owner = PlayniteApi.Dialogs.GetCurrentAppWindow();
+                window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
-            // Use Show or ShowDialog to show the window
-            window.ShowDialog();
+                // Use Show or ShowDialog to show the window
+                window.ShowDialog();
+            }
+            catch (Exception E)
+            {
+                logger.Error(E, "Error during initializing GameImportView");
+                PlayniteApi.Dialogs.ShowErrorMessage(E.Message, "Error during DoImportGames");
+            }
         }
 
         public override List<MainMenuItem> GetMainMenuItems(GetMainMenuItemsArgs args)
@@ -61,7 +69,7 @@ namespace SimpleGameImport
                     MenuSection = "@Simple Game Importer",
                     Icon = Path.Combine(PluginFolder, "icon.png"),
                     Description = resources.GetString("LOC_SIMPLEGAMEIMPORTER_Import"),
-                    Action = (gameMenuItem) =>
+                    Action = (MainMenuItem) =>
                     {
                        DoImportGames();                        
                     }

@@ -64,7 +64,6 @@ namespace SimpleGameImport
         private void RestoreSettings(SimpleGameImportSettings source)
         {
             DefaultDuplicateDetectionIndex = source.DefaultDuplicateDetectionIndex;
-
         }
     }
 }
