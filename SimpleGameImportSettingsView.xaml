@@ -6,6 +6,16 @@
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="600">
 
-    <Label HorizontalAlignment="Center" VerticalAlignment="Center">Created By joyrider3774</Label>
+    <StackPanel Margin="5">
+        <Label Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DefaultDuplicateDetection}"/>
+        <ComboBox Name="CmbDuplicateDetection" SelectedIndex="{Binding DefaultDuplicateDetectionIndex}">
+            <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionNone}"/>
+            <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName}"/>
+            <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform}"/>
+            <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Source}"/>
+            <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform_Source}"/>
+        </ComboBox>
+
+    </StackPanel>
 
 </UserControl>

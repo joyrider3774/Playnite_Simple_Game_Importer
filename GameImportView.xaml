@@ -14,23 +14,36 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
             <RowDefinition Height="35"/>
 
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Grid.ColumnSpan="2" Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_EnterGamesInList}"/>
         <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="NoWrap" AcceptsReturn="True" Name="tbGameNames" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto"/>
+       
+        <StackPanel  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Label Margin="0,5,5,0" Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetection}"/>
+            <ComboBox Name="CmbDuplicateDetection" Margin="0,5,5,0">
+                <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionNone}"/>
+                <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName}"/>
+                <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform}"/>
+                <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Source}"/>
+                <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform_Source}"/>
+            </ComboBox>
 
-        <StackPanel  Grid.Row="2" Grid.Column="0">
+        </StackPanel>
+        
+        <StackPanel  Grid.Row="3" Grid.Column="0">
             <Label Margin="0,5,5,0" Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_AddPlatforms}"/>
             <ComboBox Name="CmbPlatforms" Margin="0,5,5,0" ItemsSource="{Binding PlatformsList}"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Grid.Column="1">
+        <StackPanel Grid.Row="3" Grid.Column="1">
             <Label Margin="5,5,0,0"  Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_AddSources}"/>
             <ComboBox Name="CmbSources" Margin="5,5,0,0" ItemsSource="{Binding SourcesList}"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0">
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0">
             <Button Width="150" Click="Button_Click" Margin="5,0"  Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_ButAddGames}"></Button>
             <Button IsCancel="True"  Width="150" Margin="5,0" Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_ButClose}"></Button>
         </StackPanel>

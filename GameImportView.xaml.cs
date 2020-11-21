@@ -8,20 +8,20 @@ using Playnite.SDK;
 
 namespace SimpleGameImport
 {
-    public partial class GameImportView: UserControl
+    public partial class GameImportView : UserControl
     {
         private readonly SimpleGameImport plugin;
-        private static IResourceProvider resources = new ResourceProvider();
+        private static readonly IResourceProvider resources = new ResourceProvider();
         public List<string> PlatformsList { get; set; } = new List<string>();
         public List<string> SourcesList { get; set; } = new List<string>();
-        
+
         public GameImportView()
         {
             InitializeComponent();
         }
-        public GameImportView(SimpleGameImport plugin)
+        public GameImportView(SimpleGameImport plugin, SimpleGameImportSettings Settings)
         {
-            this.plugin = plugin;            
+            this.plugin = plugin;
             var TmpPlatformsList = plugin.PlayniteApi.Database.Platforms.AsQueryable().OrderBy(o => o.Name).ToList();
             foreach (Platform platform in TmpPlatformsList)
             {
@@ -35,6 +35,7 @@ namespace SimpleGameImport
             }
             InitializeComponent();
             DataContext = this;
+            CmbDuplicateDetection.SelectedIndex = Settings.DefaultDuplicateDetectionIndex;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -58,44 +59,77 @@ namespace SimpleGameImport
                 if ((game.Trim() != ""))
                 {
                     bool Exists = false;
-                    var GameSearch = plugin.PlayniteApi.Database.Games.Where(o => o.Name == game);
-                    if (GameSearch.HasItems())
+                    if (CmbDuplicateDetection.SelectedIndex != 0)
                     {
-                        foreach(Game PlayniteGame in GameSearch)
+
+                        bool NameMatched = false;
+                        bool PlatformMatched = false;
+                        bool SourceMatched = false;
+                        bool PlatformSourceMatched = false;
+                        var GameSearch = plugin.PlayniteApi.Database.Games.Where(o => o.Name == game);
+                        if (GameSearch.HasItems())
                         {
-                            if (PlayniteGame.Platform.Name == CmbPlatforms.SelectedItem.ToString())
+                            NameMatched = true;
+                            string PlatformName = CmbPlatforms.SelectedItem.ToString();
+                            string SourceName = CmbSources.SelectedItem == null ? "" : CmbSources.SelectedItem.ToString();
+
+                            foreach (Game PlayniteGame in GameSearch)
                             {
-                                Exists = true;
-                                NumGamesNotAddedDouble++;
-                                break;
+                                string PlaynitePlatformName = PlayniteGame.Platform == null ? "" : PlayniteGame.Platform.Name;
+                                if (PlaynitePlatformName == PlatformName)
+                                {
+                                    PlatformMatched = true;
+                                }
+
+                                string PlayniteSourceName = PlayniteGame.Source == null ? "" : PlayniteGame.Source.Name;
+                                if (PlayniteSourceName == SourceName)
+                                {
+                                    SourceMatched = true;
+                                }
+                                if ((PlaynitePlatformName == PlatformName) &&
+                                    (PlayniteSourceName == SourceName) ||
+                                    //in case no source selected check on platform only
+                                    ((SourceName == "") &&
+                                    (PlaynitePlatformName == PlatformName)))
+                                {
+                                    PlatformSourceMatched = true;
+                                }
                             }
                         }
+                        Exists = ((CmbDuplicateDetection.SelectedIndex == 1) && NameMatched) ||
+                            ((CmbDuplicateDetection.SelectedIndex == 2) && NameMatched && PlatformMatched) ||
+                            ((CmbDuplicateDetection.SelectedIndex == 3) && NameMatched && SourceMatched) ||
+                            ((CmbDuplicateDetection.SelectedIndex == 4) && NameMatched && PlatformSourceMatched);
                     }
 
-                    if (!Exists)
+                    if (Exists)
                     {
-                        var newGame = new Game(game);
-                        var platformList = plugin.PlayniteApi.Database.Platforms.Where(o => o.Name == CmbPlatforms.SelectedItem.ToString());
-                        if (platformList.HasItems())
-                        {
-                            newGame.PlatformId = platformList.First().Id;
-                        }
-                        if (CmbSources.SelectedItem != null && (CmbSources.SelectedItem.ToString() != ""))
-                        {
-                            var sourceList = plugin.PlayniteApi.Database.Sources.Where(o => o.Name == CmbSources.SelectedItem.ToString());
-                            if (sourceList.HasItems())
-                            {
-                                newGame.SourceId = sourceList.First().Id;
-                            }
-                        }
-                        newGame.Added = DateTime.Now;
-                        plugin.PlayniteApi.Database.Games.Add(newGame);
-                        NumGamesAdded++;
+                        NumGamesNotAddedDouble++;
+                        continue;
                     }
-                }                
+
+                    var newGame = new Game(game);
+                    var platformList = plugin.PlayniteApi.Database.Platforms.Where(o => o.Name == CmbPlatforms.SelectedItem.ToString());
+                    if (platformList.HasItems())
+                    {
+                        newGame.PlatformId = platformList.First().Id;
+                    }
+                    if (CmbSources.SelectedItem != null && (CmbSources.SelectedItem.ToString() != ""))
+                    {
+                        var sourceList = plugin.PlayniteApi.Database.Sources.Where(o => o.Name == CmbSources.SelectedItem.ToString());
+                        if (sourceList.HasItems())
+                        {
+                            newGame.SourceId = sourceList.First().Id;
+                        }
+                    }
+                    newGame.Added = DateTime.Now;
+                    plugin.PlayniteApi.Database.Games.Add(newGame);
+                    NumGamesAdded++;
+
+                }
             }
-            plugin.PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOC_SIMPLEGAMEIMPORTER_GamesAdded") + $": {NumGamesAdded}\n" +
-                resources.GetString("LOC_SIMPLEGAMEIMPORTER_GamesNotAdded") +  $": {NumGamesNotAddedDouble} ");
+            plugin.PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOC_SIMPLEGAMEIMPORTER_GamesAdded") + $" {NumGamesAdded}\n" +
+                resources.GetString("LOC_SIMPLEGAMEIMPORTER_GamesNotAdded") + $" {NumGamesNotAddedDouble} ");
         }
     }
 }

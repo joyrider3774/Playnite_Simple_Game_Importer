@@ -13,9 +13,9 @@ namespace SimpleGameImport
     public class SimpleGameImport : Plugin
     {
         private static readonly ILogger logger = LogManager.GetLogger();
-        private static IResourceProvider resources = new ResourceProvider();
+        private static readonly IResourceProvider resources = new ResourceProvider();
 
-        private string pluginFolder;
+        private string PluginFolder { get; set; }
 
         private SimpleGameImportSettings Settings { get; set; }
 
@@ -25,14 +25,14 @@ namespace SimpleGameImport
         {
             Settings = new SimpleGameImportSettings(this);
 
-            pluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            PluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            Localization.SetPluginLanguage(pluginFolder, api.ApplicationSettings.Language);
+            Localization.SetPluginLanguage(PluginFolder, api.ApplicationSettings.Language);
         }
 
         public void DoImportGames()
         {
-            GameImportView ImportView = new GameImportView(this);
+            GameImportView ImportView = new GameImportView(this, Settings);
             var window = PlayniteApi.Dialogs.CreateWindow(new WindowCreationOptions
             {
                 ShowMinimizeButton = false,
@@ -59,7 +59,7 @@ namespace SimpleGameImport
             {
                 new MainMenuItem {
                     MenuSection = "@Simple Game Importer",
-                    Icon = Path.Combine(pluginFolder, "icon.png"),
+                    Icon = Path.Combine(PluginFolder, "icon.png"),
                     Description = resources.GetString("LOC_SIMPLEGAMEIMPORTER_Import"),
                     Action = (gameMenuItem) =>
                     {

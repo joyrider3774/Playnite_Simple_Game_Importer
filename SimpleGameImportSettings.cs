@@ -8,15 +8,10 @@ namespace SimpleGameImport
     {
         private readonly SimpleGameImport plugin;
 
-        public string Option1 { get; set; } = string.Empty;
-
-        public bool Option2 { get; set; } = false;
-
-        // Playnite serializes settings object to a JSON object and saves it as text file.
-        // If you want to exclude some property from being saved then use `JsonIgnore` ignore attribute.
-        [JsonIgnore]
-        public bool OptionThatWontBeSaved { get; set; } = false;
-
+        public int DefaultDuplicateDetectionIndex { get; set; } = 2;
+        
+        private SimpleGameImportSettings EditDataSettings;
+        
         // Parameterless constructor must exist if you want to use LoadPluginSettings method.
         public SimpleGameImportSettings()
         {
@@ -33,20 +28,21 @@ namespace SimpleGameImport
             // LoadPluginSettings returns null if not saved data is available.
             if (savedSettings != null)
             {
-                Option1 = savedSettings.Option1;
-                Option2 = savedSettings.Option2;
+                RestoreSettings(savedSettings);
             }
         }
 
         public void BeginEdit()
         {
             // Code executed when settings view is opened and user starts editing values.
+            EditDataSettings = new SimpleGameImportSettings(plugin);
         }
 
         public void CancelEdit()
         {
             // Code executed when user decides to cancel any changes made since BeginEdit was called.
             // This method should revert any changes made to Option1 and Option2.
+            RestoreSettings(EditDataSettings);
         }
 
         public void EndEdit()
@@ -63,6 +59,12 @@ namespace SimpleGameImport
             // List of errors is presented to user if verification fails.
             errors = new List<string>();
             return true;
+        }
+
+        private void RestoreSettings(SimpleGameImportSettings source)
+        {
+            DefaultDuplicateDetectionIndex = source.DefaultDuplicateDetectionIndex;
+
         }
     }
 }

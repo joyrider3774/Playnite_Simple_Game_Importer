@@ -5,12 +5,20 @@
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_NoGames">Bitte geben Sie ein paar Spielnamen in die Liste ein!</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_NoPlatform">Bitte wählen Sie eine Plattform, um den neuen Spielen zuzuweisen!</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesAdded">Spiele zur Datenbank hinzugefügt:</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesNotAdded">Spiele nicht hinzugefügt, da Name und Plattform bereits existiert haben</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesNotAdded">Spiele nicht hinzugefügt, weil Duplikat erkannt wurde:</sys:String>
 
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_EnterGamesInList">Gib die Liste der Spielnamen unten ein, 1 Spiel pro Linie</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_AddPlatforms">Füge die Spiele auf der folgenden Plattform hinzu:</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_AddSources">Füge die Spiele zu der folgenden Quelle hinzu:</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButAddGames">Spiele hinzufügen</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButClose">Schließen</sys:String>
-    
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetection">Duplikaterkennung auswählen</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionNone">Keine Duplikaterkennung</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName">Name</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform">Name + Plattform</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Source">Name + Quelle</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform_Source">Name + Plattform + Quelle</sys:String>
+
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DefaultDuplicateDetection">Standard Duplikaterkennung</sys:String>
+
 </ResourceDictionary>

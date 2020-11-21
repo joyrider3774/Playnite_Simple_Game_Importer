@@ -5,12 +5,20 @@
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_NoGames">Voer een paar spelnamen in de lijst!</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_NoPlatform">Selecteer een platform om aan de nieuwe spellen toe te kennen!</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesAdded">Spellen toegevoegd aan de database:</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesNotAdded">Spellen niet toegevoegd omdat naam en platform al bestonden</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesNotAdded">Spellen niet toegevoegd omdat duplicaat gedetecteerd:</sys:String>
 
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_EnterGamesInList">Voer hieronder de lijst met spelnamen in, 1 spel per regel</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_AddPlatforms">Voeg de spellen toe aan het volgende platform:</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_AddSources">Voeg de spellen toe aan de volgende bron:</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButAddGames">Spellen toevoegen</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButClose">Sluiten</sys:String>
-    
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetection">Selecteer de dubbele detectie</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionNone">Geen dubbele detectie</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName">Naam</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform">Naam + Platform</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Source">Naam + Bron</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform_Source">Naam + Platform + Bron</sys:String>
+
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DefaultDuplicateDetection">Standaard dubbele detectie</sys:String>
+
 </ResourceDictionary>
