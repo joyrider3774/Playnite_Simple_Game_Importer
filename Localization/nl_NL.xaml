@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_Import">Importeren</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_NoGames">Voer een paar spelnamen in de lijst!</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_NoPlatform">Selecteer een platform om aan de nieuwe spellen toe te kennen!</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesAdded">Spellen toegevoegd aan de database:</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesNotAdded">Spellen niet toegevoegd omdat naam en platform al bestonden</sys:String>
+
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_EnterGamesInList">Voer hieronder de lijst met spelnamen in, 1 spel per regel</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_AddPlatforms">Voeg de spellen toe aan het volgende platform:</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_AddSources">Voeg de spellen toe aan de volgende bron:</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButAddGames">Spellen toevoegen</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButClose">Sluiten</sys:String>
+    
+</ResourceDictionary>
