@@ -14,7 +14,7 @@
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButClose">Close</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetection">Select the duplicate detection</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionNone">No Duplicate Detection</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName">Name</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName">Nazwa</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform">Name + Platform</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Source">Name + Source</sys:String>
     <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform_Source">Name + Platform + Source</sys:String>
