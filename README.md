@@ -9,6 +9,9 @@ It can also be used to create a list of xbox game pass, Ea Play games etc inside
 ## Translation
 The project is translatable on [Crowdin](https://crowdin.com/project/playnite-game-speak)
 
+Thanks to the following people who have contributed with translations:
+* Spanish: Darklinpower
+
 ## Credits
 * Used Icon made by [Freepik](http://www.freepik.com/)
 * Original Localization file loader by [Lacro59](https://github.com/Lacro59)
