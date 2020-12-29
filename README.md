@@ -3,6 +3,8 @@ It's a plugin to add "virtual games" so you can add for example games from platf
 
 It can also be used to create a list of xbox game pass, Ea Play games etc inside Playnite
 
+[Latest Release](https://github.com/joyrider3774/Playnite_Simple_Game_Importer/releases/latest)
+
 ## Example Usuage video
 [![Simple Game Importer usuage Video](http://img.youtube.com/vi/4KVo9wlF9hQ/0.jpg)](https://youtu.be/4KVo9wlF9hQ "Simple Game Importer usuage Video")
 
