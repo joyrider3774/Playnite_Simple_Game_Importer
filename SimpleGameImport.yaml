@@ -1,0 +1,9 @@
+AddonId: 'SimpleGameImporter_6048b590-bdfb-4a88-8953-2985b4f5c3dc'
+Packages:
+  - Version: 2.0
+    RequiredApiVersion: 6.0.0
+    ReleaseDate: 2021-09-05
+    PackageUrl: https://github.com/joyrider3774/Playnite_Simple_Game_Importer/releases/download/v2.0fix/SimpleGameImporter_6048b590-bdfb-4a88-8953-2985b4f5c3dc_2_0.pext
+    Changelog:
+      - Updated Version for Playnite 9
+      - Updated Language Translations
