@@ -20,7 +20,7 @@ namespace SimpleGameImport
         {
             InitializeComponent();
         }
-        public GameImportView(SimpleGameImport plugin, SimpleGameImportSettings Settings)
+        public GameImportView(SimpleGameImport plugin, SimpleGameImportSettingsViewModel Settings)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace SimpleGameImport
                 }
                 InitializeComponent();
                 DataContext = this;
-                CmbDuplicateDetection.SelectedIndex = Settings.DefaultDuplicateDetectionIndex;
+                CmbDuplicateDetection.SelectedIndex = Settings.Settings.DefaultDuplicateDetectionIndex;
             }
             catch (Exception E)
             {
@@ -86,10 +86,18 @@ namespace SimpleGameImport
 
                                 foreach (Game PlayniteGame in GameSearch)
                                 {
-                                    string PlaynitePlatformName = PlayniteGame.Platform == null ? "" : PlayniteGame.Platform.Name;
-                                    if (PlaynitePlatformName == PlatformName)
+                                    bool tmpPlatformMatched = false;
+                                    if (PlayniteGame.Platforms != null)
                                     {
-                                        PlatformMatched = true;
+                                        foreach (Platform p in PlayniteGame.Platforms)
+                                        {
+                                            if (p.Name.Equals(PlatformName))
+                                            {
+                                                tmpPlatformMatched = true;
+                                                PlatformMatched = true;
+                                                break;
+                                            }
+                                        }
                                     }
 
                                     string PlayniteSourceName = PlayniteGame.Source == null ? "" : PlayniteGame.Source.Name;
@@ -97,11 +105,12 @@ namespace SimpleGameImport
                                     {
                                         SourceMatched = true;
                                     }
-                                    if ((PlaynitePlatformName == PlatformName) &&
+
+                                    if (tmpPlatformMatched &&
                                         (PlayniteSourceName == SourceName) ||
                                         //in case no source selected check on platform only
                                         ((SourceName == "") &&
-                                        (PlaynitePlatformName == PlatformName)))
+                                        tmpPlatformMatched))
                                     {
                                         PlatformSourceMatched = true;
                                     }
@@ -123,7 +132,9 @@ namespace SimpleGameImport
                         var platformList = plugin.PlayniteApi.Database.Platforms.Where(o => o.Name == CmbPlatforms.SelectedItem.ToString());
                         if (platformList.HasItems())
                         {
-                            newGame.PlatformId = platformList.First().Id;
+                            List<Guid> PlatformIds = new List<Guid>();
+                            PlatformIds.Add(platformList.First().Id);
+                            newGame.PlatformIds = PlatformIds;
                         }
                         if (CmbSources.SelectedItem != null && (CmbSources.SelectedItem.ToString() != ""))
                         {

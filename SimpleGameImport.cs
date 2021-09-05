@@ -1,4 +1,5 @@
 ﻿using Playnite.SDK;
+using Playnite.SDK.Events;
 using Playnite.SDK.Models;
 using Playnite.SDK.Plugins;
 using System;
@@ -10,20 +11,24 @@ using System.Windows.Controls;
 
 namespace SimpleGameImport
 {
-    public class SimpleGameImport : Plugin
+    public class SimpleGameImport : GenericPlugin
     {
         private static readonly ILogger logger = LogManager.GetLogger();
         private static readonly IResourceProvider resources = new ResourceProvider();
 
         private string PluginFolder { get; set; }
 
-        private SimpleGameImportSettings Settings { get; set; }
+        private SimpleGameImportSettingsViewModel Settings { get; set; }
 
         public override Guid Id { get; } = Guid.Parse("6048b590-bdfb-4a88-8953-2985b4f5c3dc");
 
         public SimpleGameImport(IPlayniteAPI api) : base(api)
         {
-            Settings = new SimpleGameImportSettings(this);
+            Settings = new SimpleGameImportSettingsViewModel(this);
+            Properties = new GenericPluginProperties
+            {
+                HasSettings = true
+            };
 
             PluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
@@ -61,7 +66,7 @@ namespace SimpleGameImport
             }
         }
 
-        public override List<MainMenuItem> GetMainMenuItems(GetMainMenuItemsArgs args)
+        public override IEnumerable<MainMenuItem> GetMainMenuItems(GetMainMenuItemsArgs args)
         {
             List<MainMenuItem> MainMenuItems = new List<MainMenuItem>
             {
@@ -79,42 +84,42 @@ namespace SimpleGameImport
         }
 
 
-        public override void OnGameInstalled(Game game)
+        public override void OnGameInstalled(OnGameInstalledEventArgs args)
         {
             // Add code to be executed when game is finished installing.
         }
 
-        public override void OnGameStarted(Game game)
+        public override void OnGameStarted(OnGameStartedEventArgs args)
         {
             // Add code to be executed when game is started running.
         }
 
-        public override void OnGameStarting(Game game)
+        public override void OnGameStarting(OnGameStartingEventArgs args)
         {
             // Add code to be executed when game is preparing to be started.
         }
 
-        public override void OnGameStopped(Game game, long elapsedSeconds)
+        public override void OnGameStopped(OnGameStoppedEventArgs args)
         {
             // Add code to be executed when game is preparing to be started.
         }
 
-        public override void OnGameUninstalled(Game game)
+        public override void OnGameUninstalled(OnGameUninstalledEventArgs args)
         {
             // Add code to be executed when game is uninstalled.
         }
 
-        public override void OnApplicationStarted()
+        public override void OnApplicationStarted(OnApplicationStartedEventArgs args)
         {
             // Add code to be executed when Playnite is initialized.
         }
 
-        public override void OnApplicationStopped()
+        public override void OnApplicationStopped(OnApplicationStoppedEventArgs args)
         {
             // Add code to be executed when Playnite is shutting down.
         }
 
-        public override void OnLibraryUpdated()
+        public override void OnLibraryUpdated(OnLibraryUpdatedEventArgs args)
         {
             // Add code to be executed when library is updated.
         }

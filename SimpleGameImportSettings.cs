@@ -1,23 +1,33 @@
 ﻿using Newtonsoft.Json;
 using Playnite.SDK;
+using Playnite.SDK.Data;
 using System.Collections.Generic;
 
 namespace SimpleGameImport
 {
-    public class SimpleGameImportSettings : ISettings
+
+    public class SimpleGameImportSettings
+    {
+        public int DefaultDuplicateDetectionIndex { get; set; } = 2;
+    }
+
+    public class SimpleGameImportSettingsViewModel : ObservableObject, ISettings
     {
         private readonly SimpleGameImport plugin;
+        private SimpleGameImportSettings editingClone { get; set; }
 
-        public int DefaultDuplicateDetectionIndex { get; set; } = 2;
-        
-        private SimpleGameImportSettings EditDataSettings;
-        
-        // Parameterless constructor must exist if you want to use LoadPluginSettings method.
-        public SimpleGameImportSettings()
+        private SimpleGameImportSettings settings;
+        public SimpleGameImportSettings Settings
         {
+            get => settings;
+            set
+            {
+                settings = value;
+                OnPropertyChanged();
+            }
         }
 
-        public SimpleGameImportSettings(SimpleGameImport plugin)
+        public SimpleGameImportSettingsViewModel(SimpleGameImport plugin)
         {
             // Injecting your plugin instance is required for Save/Load method because Playnite saves data to a location based on what plugin requested the operation.
             this.plugin = plugin;
@@ -28,28 +38,32 @@ namespace SimpleGameImport
             // LoadPluginSettings returns null if not saved data is available.
             if (savedSettings != null)
             {
-                RestoreSettings(savedSettings);
+                Settings = savedSettings;
+            }
+            else
+            {
+                Settings = new SimpleGameImportSettings();
             }
         }
 
         public void BeginEdit()
         {
             // Code executed when settings view is opened and user starts editing values.
-            EditDataSettings = new SimpleGameImportSettings(plugin);
+            editingClone = Serialization.GetClone(Settings);
         }
 
         public void CancelEdit()
         {
             // Code executed when user decides to cancel any changes made since BeginEdit was called.
             // This method should revert any changes made to Option1 and Option2.
-            RestoreSettings(EditDataSettings);
+            Settings = editingClone;
         }
 
         public void EndEdit()
         {
             // Code executed when user decides to confirm changes made since BeginEdit was called.
             // This method should save settings made to Option1 and Option2.
-            plugin.SavePluginSettings(this);
+            plugin.SavePluginSettings(Settings);
         }
 
         public bool VerifySettings(out List<string> errors)
@@ -59,11 +73,6 @@ namespace SimpleGameImport
             // List of errors is presented to user if verification fails.
             errors = new List<string>();
             return true;
-        }
-
-        private void RestoreSettings(SimpleGameImportSettings source)
-        {
-            DefaultDuplicateDetectionIndex = source.DefaultDuplicateDetectionIndex;
         }
     }
 }

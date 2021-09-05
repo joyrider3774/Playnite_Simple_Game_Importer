@@ -1,7 +1,7 @@
-﻿Id: ImportCSV_6048b590-bdfb-4a88-8953-2985b4f5c3dc
+﻿Id: SimpleGameImporter_6048b590-bdfb-4a88-8953-2985b4f5c3dc
 Name: Simple Game Import
 Author: Joyrider3774
-Version: 1.0
+Version: 2.0
 Module: SimpleGameImport.dll
 Type: GenericPlugin
 Icon: icon.png

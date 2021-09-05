@@ -8,7 +8,7 @@
 
     <StackPanel Margin="5">
         <Label Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DefaultDuplicateDetection}"/>
-        <ComboBox Name="CmbDuplicateDetection" SelectedIndex="{Binding DefaultDuplicateDetectionIndex}">
+        <ComboBox Name="CmbDuplicateDetection" SelectedIndex="{Binding Settings.DefaultDuplicateDetectionIndex}">
             <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionNone}"/>
             <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName}"/>
             <ComboBoxItem Content="{DynamicResource LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform}"/>
