@@ -1,24 +1,26 @@
 ﻿<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_Import">Import</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_NoGames">Please enter a few game names in the list!</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_NoPlatform">Please select a platform to assign to the new games!</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesAdded">Games added to the database:</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesNotAdded">Games not added because duplicate detected:</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_Import">Importar</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_NoGames">Por favor, insira alguns nomes de jogos na lista!</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_NoPlatform">Selecione uma plataforma para atribuir aos novos jogos!</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesAdded">Jogos adicionados ao banco de dados:</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_GamesNotAdded">Jogos não adicionados porque se encontram duplicados:</sys:String>
 
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_EnterGamesInList">Enter the list of game names below, 1 game per line</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_AddPlatforms">Add the games to the following platform:</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_AddSources">Add the games to the following Source:</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButAddGames">Add games</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButClose">Close</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetection">Select the duplicate detection</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionNone">No Duplicate Detection</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName">Name</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform">Name + Platform</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Source">Name + Source</sys:String>
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform_Source">Name + Platform + Source</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_EnterGamesInList">Português
 
-    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DefaultDuplicateDetection">Default duplicate detection</sys:String>
+Insira a lista de nomes de jogos abaixo, 1 jogo por linha</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_AddPlatforms">Adicione os jogos à seguinte plataforma:</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_AddSources">Adicione os jogos à seguinte fonte:</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButAddGames">Adicionar jogos</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_ButClose">Fechar</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetection">Selecione a detecção de duplicados</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionNone">Sem detecção de duplicados</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName">Nome</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform">Nome + Plataforma</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Source">Nome + Fonte</sys:String>
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DuplicateDetectionName_Platform_Source">Nome + Plataforma + Fonte</sys:String>
+
+    <sys:String x:Key="LOC_SIMPLEGAMEIMPORTER_DefaultDuplicateDetection">Detecção de duplicata padrão</sys:String>
 
 </ResourceDictionary>
