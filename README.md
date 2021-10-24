@@ -6,7 +6,7 @@ It can also be used to create a list of xbox game pass, Ea Play games etc inside
 [Latest Release](https://github.com/joyrider3774/Playnite_Simple_Game_Importer/releases/latest)
 
 ## Example Usuage video
-[![Simple Game Importer usuage Video](http://img.youtube.com/vi/7zP1iC6Ud-E/0.jpg)](https://youtu.be/7zP1iC6Ud-E "Simple Game Importer usuage Video")
+[![Simple Game Importer usuage Video](http://img.youtube.com/vi/4KVo9wlF9hQ/0.jpg)](https://youtu.be/4KVo9wlF9hQ "Simple Game Importer usuage Video")
 
 ## Translation
 The project is translatable on [Crowdin](https://crowdin.com/project/playnite-game-speak)
