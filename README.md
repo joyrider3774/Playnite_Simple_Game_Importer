@@ -1,4 +1,6 @@
 # Playnite Simple Game Importer
+![DownloadCountTotal](https://img.shields.io/github/downloads/joyrider3774/Playnite_Simple_Game_Importer/total?label=total%20downloads&style=plastic) ![DownloadCountLatest](https://img.shields.io/github/downloads/joyrider3774/Playnite_Simple_Game_Importer/latest/total?style=plastic) ![LatestVersion](https://img.shields.io/github/v/tag/joyrider3774/Playnite_Simple_Game_Importer?label=Latest%20version&style=plastic) ![License](https://img.shields.io/github/license/joyrider3774/Playnite_Simple_Game_Importer?style=plastic)
+
 It's a plugin to add "virtual games" so you can add for example games from platforms that do not automatically import. Lets say your nintendo switch games, or your old console games. 
 
 It can also be used to create a list of xbox game pass, Ea Play games etc inside Playnite
